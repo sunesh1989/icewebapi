@@ -22,6 +22,8 @@ namespace ICEWebAPI
                 defaults: new { id = RouteParameter.Optional }
             );
 
+            config.Formatters.JsonFormatter.MediaTypeMappings.Add(new QueryStringMapping("type", "json", new MediaTypeHeaderValue("application/json")));
+
             config.Formatters.XmlFormatter.MediaTypeMappings.Add(new QueryStringMapping("type", "xml", new MediaTypeHeaderValue("application/xml")));
         }
     }
