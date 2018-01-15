@@ -15,14 +15,14 @@ namespace ICEWebAPI.Controllers
     {
         [HttpGet]
         [Route("~/readqueue")]
-        public async Task<IEnumerable<Account>> Get()
+        public async Task<IEnumerable<AccountNew>> Get()
         {
             return await Queue();
         }
 
-        public async Task<IEnumerable<Account>> Queue()
+        public async Task<IEnumerable<AccountNew>> Queue()
         {
-            var result = new List<Account>();
+            var result = new List<AccountNew>();
             try
             {
                 //TokenProvider tokenProvider = TokenProvider.CreateSharedAccessSignatureTokenProvider(ICEConfig.keyName, ICEConfig.accessKey);
@@ -46,7 +46,7 @@ namespace ICEWebAPI.Controllers
 
                 for (int i = 0; i < 10; i++)
                 {
-                    result.Add(new Account() { Name = "Test Name ", Store_Type_Desc__c = "sample description", Description = "Sample Simple description" });
+                    result.Add(new AccountNew() { Name = "Test Name ", Store_Type_Desc__c = "sample description", Description = "Sample Simple description" });
                 }
             }
             catch (Exception)
@@ -56,5 +56,12 @@ namespace ICEWebAPI.Controllers
             return result;
         }
 
+    }
+
+    public class AccountNew
+    {
+        public string Name { get; set; }
+        public string Store_Type_Desc__c { get; set; }
+        public string Description { get; set; }
     }
 }
