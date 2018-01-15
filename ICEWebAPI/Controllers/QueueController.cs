@@ -15,12 +15,12 @@ namespace ICEWebAPI.Controllers
     {
         [HttpGet]
         [Route("~/readqueue")]
-        public async Task<IEnumerable<Account>> Get()
+        public async Task<List<Account>> Get()
         {
             return await Queue();
         }
 
-        public async Task<IEnumerable<Account>> Queue()
+        public async Task<List<Account>> Queue()
         {
             var result = new List<Account>();
             try
