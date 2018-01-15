@@ -40,8 +40,21 @@ namespace ICEWebAPI.Controllers
                         {
                             result.Add(new AccountNew()
                             {
-                                Name= objresult.Name,
-                                Phone = objresult.Phone,                                
+                                Name = objresult.Name,
+                                Phone = objresult.Phone,
+                                Website = objresult.Website,
+                                SicDesc = objresult.SicDesc,
+                                Reference_Number__c = objresult.Reference_Number__c,
+                                Fax_Number__c = objresult.Fax_Number__c,
+                                CGO_Email__c = objresult.CGO_Email__c,
+                                Store_Type_Desc__c = objresult.Store_Type_Desc__c,
+                                Opening_Hours_Main__c = objresult.Opening_Hours_Main__c,
+                                Store_Manager__c = objresult.Store_Manager__c,
+                                Store_Manager_Email__c = objresult.Store_Manager_Email__c,
+                                Area_Manager_Email__c = objresult.Area_Manager_Email__c,
+                                Area_Name__c = objresult.Area_Name__c,
+                                Store_Manager_Contact__c = objresult.Store_Manager_Contact__c,
+                                Area_Manager_Contact__c = objresult.Area_Manager_Contact__c,
                             });
                         }
                        
