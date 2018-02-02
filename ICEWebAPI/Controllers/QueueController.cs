@@ -31,9 +31,7 @@ namespace ICEWebAPI.Controllers
             {
                 foreach (var item in list)
                 {
-                     string accountSid = "AC9cedced3ea42a41190c724959bf10823";
-                     string authToken = "b04a68a51793944b9265849e18037dff";
-                    TwilioClient.Init(accountSid, authToken);
+                    TwilioClient.Init(item.AccountId, item.AuthToken);
 
                     var to = new PhoneNumber("+919895814621");
                     var message = MessageResource.Create(
@@ -126,6 +124,7 @@ namespace ICEWebAPI.Controllers
     }
    public class TwilioSMS
     {
+        public string AccountId { get; set; }
         public string AuthToken { get; set; }
         public string MessageBody { get; set; }
         public string ToPhone { get; set; }
