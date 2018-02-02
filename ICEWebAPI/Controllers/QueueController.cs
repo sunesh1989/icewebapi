@@ -8,6 +8,9 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Xml.Serialization;
+using Twilio;
+using Twilio.Rest.Api.V2010.Account;
+using Twilio.Types;
 
 namespace ICEWebAPI.Controllers
 {
@@ -18,6 +21,34 @@ namespace ICEWebAPI.Controllers
         public async Task<IEnumerable<AccountNew>> Get()
         {
             return await Queue();
+        }
+
+        [HttpPost]
+        [Route("~/pushsms")]
+        public IHttpActionResult sendsms(IEnumerable<TwilioSMS> list)
+        {
+            try
+            {
+                foreach (var item in list)
+                {
+                     string accountSid = "AC9cedced3ea42a41190c724959bf10823";
+                     string authToken = "b04a68a51793944b9265849e18037dff";
+                    TwilioClient.Init(accountSid, authToken);
+
+                    var to = new PhoneNumber("+919895814621");
+                    var message = MessageResource.Create(
+                    to,
+                    from: new PhoneNumber("+13023874116"),
+                    body: "This is the ship that made the Kessel Run in fourteen parsecs dd?");
+                }
+
+            }
+            catch (Exception e)
+            {
+                return NotFound();
+            }
+
+            return Ok();
         }
 
         public async Task<IEnumerable<AccountNew>> Queue()
@@ -92,6 +123,13 @@ namespace ICEWebAPI.Controllers
         public string Area_Name__c { get; set; }
         public string Store_Manager_Contact__c { get; set; }
         public string Area_Manager_Contact__c { get; set; }
+    }
+   public class TwilioSMS
+    {
+        public string AuthToken { get; set; }
+        public string MessageBody { get; set; }
+        public string ToPhone { get; set; }
+        public string FromPhone { get; set; }
     }
 }
 
