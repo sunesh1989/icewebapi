@@ -37,7 +37,7 @@ namespace ICEWebAPI.Controllers
                     var message = MessageResource.Create(
                     to,
                     from: new PhoneNumber("+13023874116"),
-                    body: "This is the ship that made the Kessel Run in fourteen parsecs dd?");
+                    body: "Message from Alexa");
                 }
 
             }
